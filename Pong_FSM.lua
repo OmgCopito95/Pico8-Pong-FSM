@@ -11,6 +11,7 @@ function GameEngine()
     -- this thing in {} is a class in lua
     return {
         timer = 0,
+        blink_speed = 20,
         state = game_state_start,
         
         update = function(self)
@@ -23,13 +24,12 @@ function GameEngine()
 
         set_state = function(self,st)
             self.state = st
-            if (st.start != nil) st.init(self)
+            if (st.init != nil) st.init(self)
         end
     }
 end
 
 game_state_start = {
-
     --Runs the first time the state starts
     init = function(self)
         --body
@@ -38,16 +38,26 @@ game_state_start = {
     update = function(self)
         --body
         self.timer += 1
+        --self.timer = self.timer % self.blink_speed
+        if (btn(4) or btn(5)) and self.blink_speed ~= 2 then
+            self.blink_speed = 2
+            self.timer = 0
+            --sfx()
+        end
+        if self.timer > 30 and self.blink_speed == 2 then
+            self:set_state(game_state_play)
+        end
     end,
 
     draw = function(self)
         --body
-        print("press action to start",22,90,7)
+        if self.timer % self.blink_speed < self.blink_speed/2  then
+            print("press action to start",22,90,7)
+        end
     end,
 }
 
-game_state_play = {
-    
+game_state_play = {    
     --Runs the first time the state starts
     init = function(self)
         --body
@@ -59,11 +69,11 @@ game_state_play = {
 
     draw = function(self)
         --body
+        print("game pew pew!",22,90,7)
     end,
 }
 
-game_state_end = {
-    
+game_state_end = {    
     --Runs the first time the state starts
     init = function(self)
         --body
