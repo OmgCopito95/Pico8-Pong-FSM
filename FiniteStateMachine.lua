@@ -6,11 +6,11 @@
 --The GameEngine class controls the game
 --GameEngine has 3 states: start, play, gameover
 
+
 function GameEngine()
     -- this thing in {} is a class in lua
     return {
         timer = 0,
-        text = "ESCRIBIR ESTO",
         state = game_state_start,
         
         update = function(self)
@@ -42,8 +42,7 @@ game_state_start = {
 
     draw = function(self)
         --body
-        print(0,0,self.text,11)
-        print(self.timer,30,30,8)
+        print("press action to start",22,90,7)
     end,
 }
 
@@ -76,6 +75,8 @@ game_state_end = {
 
     draw = function(self)
         --body
+        rectfill(0,61,127,67,1)
+        print("game over",46,62,7)
     end,
 }
 
@@ -95,3 +96,4 @@ function _draw()
   cls()
   game:draw()
 end
+
