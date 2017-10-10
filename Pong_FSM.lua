@@ -24,6 +24,7 @@ function GameEngine()
 
         set_state = function(self,st)
             self.state = st
+            --If state contains init method, run it
             if (st.init != nil) st.init(self)
         end
     }
@@ -60,16 +61,20 @@ game_state_start = {
 game_state_play = {    
     --Runs the first time the state starts
     init = function(self)
-        --body
+        --create a player instance, will be used until gameover
+        --"player" belongs to a GameEngine attribute
+        self.player = Player()
+        self.player:set_state(player_state_freeze)
     end,
 
     update = function(self)
-        --body
+        --use : to send the "player" data
+        self.player:update()
     end,
 
     draw = function(self)
         --body
-        print("game pew pew!",22,90,7)
+        self.player:draw()
     end,
 }
 
@@ -87,6 +92,79 @@ game_state_end = {
         --body
         rectfill(0,61,127,67,1)
         print("game over",46,62,7)
+    end,
+}
+
+
+function Player()
+    -- this thing in {} is a class in lua
+    return {
+        x = 64,
+        y = 126,
+        w = 10,
+        h = 3,
+        speed = 4,
+        lives = 3,
+        timer = 0,
+        
+        update = function(self)
+            self.state.update(self)
+        end,
+
+        draw = function(self)
+            self.state.draw(self)
+        end,
+
+        set_state = function(self,st)
+            self.state = st
+            if (st.init != nil) st.init(self)
+        end
+    }
+end
+
+player_state_freeze = {    
+    --Runs the first time the state starts
+    init = function(self)
+        --body
+    end,
+
+    update = function(self)
+        --body
+        self.timer += 1
+        if self.timer > 60 then
+            self.timer = 0
+            self:set_state(player_state_move)
+        end
+    end,
+
+    draw = function(self)
+        --body
+        print("Ready...",50,60)
+        rectfill(self.x-self.w,self.y+self.h,self.x+self.w,self.y-self.h,8)
+    end,
+}
+
+player_state_move = {    
+    --Runs the first time the state starts
+    init = function(self)
+        --body
+    end,
+
+    update = function(self)
+        self.timer += 1
+        --manage user input
+        if self.timer > 9 then
+            if (btn(0)) self.x -= self.speed
+            if (btn(1)) self.x += self.speed
+        end
+    end,
+
+    draw = function(self)
+        --body
+        if self.timer < 10 then
+            print("Go!",60,60,8)
+        end
+        rectfill(self.x-self.w,self.y+self.h,self.x+self.w,self.y-self.h,8)
     end,
 }
 
