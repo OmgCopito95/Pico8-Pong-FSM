@@ -64,17 +64,20 @@ game_state_play = {
         --create a player instance, will be used until gameover
         --"player" belongs to a GameEngine attribute
         self.player = Player()
+        self.ball = Ball()
         self.player:set_state(player_state_freeze)
     end,
 
     update = function(self)
         --use : to send the "player" data
         self.player:update()
+        self.ball:update()
     end,
 
     draw = function(self)
         --body
         self.player:draw()
+        self.ball:draw()
     end,
 }
 
@@ -100,9 +103,9 @@ function Player()
     -- this thing in {} is a class in lua
     return {
         x = 64,
-        y = 126,
+        y = 124,
         w = 10,
-        h = 3,
+        h = 2,
         speed = 4,
         lives = 3,
         timer = 0,
@@ -165,6 +168,73 @@ player_state_move = {
             print("Go!",60,60,8)
         end
         rectfill(self.x-self.w,self.y+self.h,self.x+self.w,self.y-self.h,8)
+    end,
+}
+
+function Ball()
+    -- this thing in {} is a class in lua
+    return {
+        x = 64,
+        y = 119,
+        r = 2,
+        direc = {1,-1},
+        speed = 0.5,
+        timer = 0,
+        state = ball_state_die,
+        
+        update = function(self)
+            self.state.update(self)
+        end,
+
+        draw = function(self)
+            self.state.draw(self)
+        end,
+
+        set_state = function(self,st)
+            self.state = st
+            if (st.init != nil) st.init(self)
+        end
+    }
+end
+
+ball_state_die = {    
+    --Runs the first time the state starts
+    init = function(self)
+        --body
+    end,
+
+    update = function(self)
+        --body
+        self.timer += 1
+        if self.timer > 60 then
+            self.timer = 0
+            self:set_state(ball_state_move)
+        end
+    end,
+
+    draw = function(self)
+        --body
+        if self.timer > 30 then
+            circfill(self.x,self.y,self.r,8)
+        end
+    end,
+}
+
+ball_state_move = {    
+    --Runs the first time the state starts
+    init = function(self)
+        --body
+    end,
+
+    update = function(self)
+        self.timer += 1
+        self.x += self.speed * self.direc[1]
+        self.y += self.speed * self.direc[2]
+    end,
+
+    draw = function(self)
+        --body
+        circfill(self.x,self.y,self.r,8)
     end,
 }
 
