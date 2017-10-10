@@ -23,6 +23,7 @@ function GameEngine()
         end,
 
         set_state = function(self,st)
+            self.timer = 0
             self.state = st
             --If state contains init method, run it
             if (st.init != nil) st.init(self)
@@ -72,6 +73,28 @@ game_state_play = {
         --use : to send the "player" data
         self.player:update()
         self.ball:update()
+
+        if self.ball.state == ball_state_move then
+            --collition system
+            local bx = self.ball.x
+            local by = self.ball.y
+            local bdirec = self.ball.direc
+            local px = self.player.x
+            local py = self.player.y
+            local pw = self.player.w
+            local ph = self.player.h
+            if (bx > 124) bdirec[1] = -1
+            if (bx < 2) bdirec[1] = 1
+            if (by < 2) bdirec[2] = 1
+            if by >= py-ph and by <= py+ph and bx >= px-pw and bx <= px+pw then
+                --bounce at player
+                self.ball.direc[2] = -1
+            elseif by >= 128 then
+                self.player.lives -= 1
+                self.player:set_state(player_state_freeze)
+                self.ball:set_state(ball_state_die)
+            end
+        end
     end,
 
     draw = function(self)
@@ -119,6 +142,7 @@ function Player()
         end,
 
         set_state = function(self,st)
+            self.timer = 0
             self.state = st
             if (st.init != nil) st.init(self)
         end
@@ -129,13 +153,14 @@ player_state_freeze = {
     --Runs the first time the state starts
     init = function(self)
         --body
+        self.x = 64
     end,
 
     update = function(self)
         --body
         self.timer += 1
         if self.timer > 60 then
-            self.timer = 0
+            --self.timer = 0
             self:set_state(player_state_move)
         end
     end,
@@ -178,7 +203,7 @@ function Ball()
         y = 119,
         r = 2,
         direc = {1,-1},
-        speed = 0.5,
+        speed = 2,
         timer = 0,
         state = ball_state_die,
         
@@ -191,6 +216,7 @@ function Ball()
         end,
 
         set_state = function(self,st)
+            self.timer = 0
             self.state = st
             if (st.init != nil) st.init(self)
         end
@@ -201,13 +227,16 @@ ball_state_die = {
     --Runs the first time the state starts
     init = function(self)
         --body
+        self.x = 64
+        self.y = 119
+        self.direc = {1,-1}
     end,
 
     update = function(self)
         --body
         self.timer += 1
         if self.timer > 60 then
-            self.timer = 0
+            --self.timer = 0
             self:set_state(ball_state_move)
         end
     end,
