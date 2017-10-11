@@ -35,6 +35,7 @@ game_state_start = {
     --Runs the first time the state starts
     init = function(self)
         --body
+        self.blink_speed = 20
     end,
 
     update = function(self)
@@ -74,6 +75,10 @@ game_state_play = {
         self.player:update()
         self.ball:update()
 
+        if self.player.lives == 0 then
+            self:set_state(game_state_end)
+        end
+
         if self.ball.state == ball_state_move then
             --collition system
             local bx = self.ball.x
@@ -82,11 +87,12 @@ game_state_play = {
             local px = self.player.x
             local py = self.player.y
             local pw = self.player.w
-            local ph = self.player.h
-            if (bx > 124) bdirec[1] = -1
-            if (bx < 2) bdirec[1] = 1
-            if (by < 2) bdirec[2] = 1
-            if by >= py-ph and by <= py+ph and bx >= px-pw and bx <= px+pw then
+            --local ph = self.player.h
+            if (bx > 123) bdirec[1] = -1
+            if (bx < 3) bdirec[1] = 1
+            if (by < 4) bdirec[2] = 1
+            --if by >= py-ph and by <= py+ph and bx >= px-pw and bx <= px+pw then
+            if by >= py-4 and by <= py+4 and bx >= px-pw+2 and bx <= px+pw-2 then
                 --bounce at player
                 self.ball.direc[2] = -1
             elseif by >= 128 then
@@ -112,6 +118,9 @@ game_state_end = {
 
     update = function(self)
         --body
+        if btn(4) or btn(5) then
+            self:set_state(game_state_start)
+        end
     end,
 
     draw = function(self)
@@ -166,8 +175,11 @@ player_state_freeze = {
     end,
 
     draw = function(self)
-        --body
         print("Ready...",50,60)
+        --draw lives
+        for i=1,self.lives do
+            spr(1,80+i*10,2)
+        end
         rectfill(self.x-self.w,self.y+self.h,self.x+self.w,self.y-self.h,8)
     end,
 }
@@ -203,7 +215,7 @@ function Ball()
         y = 119,
         r = 2,
         direc = {1,-1},
-        speed = 2,
+        speed = 4,
         timer = 0,
         state = ball_state_die,
         
@@ -262,7 +274,7 @@ ball_state_move = {
     end,
 
     draw = function(self)
-        --body
+        --draw ball
         circfill(self.x,self.y,self.r,8)
     end,
 }
@@ -274,13 +286,13 @@ function _init()
 end
 
 function _update()
-  -- body
-  game:update()
+    -- body
+    game:update()
 end
 
 function _draw()
-  -- body
-  cls()
-  game:draw()
+    -- body
+    cls()
+    game:draw()
 end
 
