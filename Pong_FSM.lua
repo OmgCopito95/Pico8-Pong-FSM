@@ -34,18 +34,14 @@ end
 game_state_start = {
     --Runs the first time the state starts
     init = function(self)
-        --body
         self.blink_speed = 20
     end,
 
     update = function(self)
-        --body
         self.timer += 1
-        --self.timer = self.timer % self.blink_speed
         if (btn(4) or btn(5)) and self.blink_speed ~= 2 then
             self.blink_speed = 2
             self.timer = 0
-            --sfx()
         end
         if self.timer > 30 and self.blink_speed == 2 then
             self:set_state(game_state_play)
@@ -53,7 +49,6 @@ game_state_start = {
     end,
 
     draw = function(self)
-        --body
         if self.timer % self.blink_speed < self.blink_speed/2  then
             print("press action to start",22,90,7)
         end
@@ -104,18 +99,12 @@ game_state_play = {
     end,
 
     draw = function(self)
-        --body
         self.player:draw()
         self.ball:draw()
     end,
 }
 
-game_state_end = {    
-    --Runs the first time the state starts
-    init = function(self)
-        --body
-    end,
-
+game_state_end = {
     update = function(self)
         --body
         if btn(4) or btn(5) then
@@ -161,15 +150,12 @@ end
 player_state_freeze = {    
     --Runs the first time the state starts
     init = function(self)
-        --body
         self.x = 64
     end,
 
     update = function(self)
-        --body
         self.timer += 1
         if self.timer > 60 then
-            --self.timer = 0
             self:set_state(player_state_move)
         end
     end,
@@ -184,12 +170,7 @@ player_state_freeze = {
     end,
 }
 
-player_state_move = {    
-    --Runs the first time the state starts
-    init = function(self)
-        --body
-    end,
-
+player_state_move = {
     update = function(self)
         self.timer += 1
         --manage user input
@@ -200,7 +181,6 @@ player_state_move = {
     end,
 
     draw = function(self)
-        --body
         if self.timer < 10 then
             print("Go!",60,60,8)
         end
@@ -261,12 +241,7 @@ ball_state_die = {
     end,
 }
 
-ball_state_move = {    
-    --Runs the first time the state starts
-    init = function(self)
-        --body
-    end,
-
+ball_state_move = {
     update = function(self)
         self.timer += 1
         self.x += self.speed * self.direc[1]
@@ -286,12 +261,10 @@ function _init()
 end
 
 function _update()
-    -- body
     game:update()
 end
 
 function _draw()
-    -- body
     cls()
     game:draw()
 end
