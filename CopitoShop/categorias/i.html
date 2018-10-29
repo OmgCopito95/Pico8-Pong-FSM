@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
-<title>Copito Shop Categories</title>
+<title>Copito Shop</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
@@ -11,9 +11,10 @@
 <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.carousel.css">
 <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
 <link rel="stylesheet" type="text/css" href="../plugins/OwlCarousel2-2.2.1/animate.css">
+<link rel="stylesheet" href="../plugins/themify-icons/themify-icons.css">
 <link rel="stylesheet" type="text/css" href="../plugins/jquery-ui-1.12.1.custom/jquery-ui.css">
-<link rel="stylesheet" type="text/css" href="../styles/categories_styles.css">
-<link rel="stylesheet" type="text/css" href="../styles/categories_responsive.css">
+<link rel="stylesheet" type="text/css" href="../styles/single_styles.css">
+<link rel="stylesheet" type="text/css" href="../styles/single_responsive.css">
 </head>
 
 <body>
@@ -39,10 +40,10 @@
 						</div>
 						<nav class="navbar">
 							<ul class="navbar_menu">
-								<li><a href="index.html">inicio</a></li>
-								<li><a href="i.html">tienda</a></li>
+								<li><a href="../index.html">inicio</a></li>
+								<li><a href="../categorias/i.html">tienda</a></li>
 								<li><a href="categories.html">promociones</a></li>
-								<li><a href="contacto.html">contacto</a></li>
+								<li><a href="../contacto.html">contacto</a></li>
 							</ul>
 							
 							<div class="hamburger_container">
@@ -57,173 +58,131 @@
 	</header>
 
 	<div class="fs_menu_overlay"></div>
-
-	<!-- Hamburger Menu -->
-
-	<div class="fs_menu_overlay"></div>
 	<div class="hamburger_menu">
 		<div class="hamburger_close"><i class="fa fa-times" aria-hidden="true"></i></div>
 		<div class="hamburger_menu_content text-right">
 			<ul class="menu_top_nav">
 				
-				<li class="menu_item"><a href="../index.html">home</a></li>
-				<li class="menu_item"><a href="i.html">tienda</a></li>
+				<li class="menu_item"><a href="../index.html">inicio</a></li>
+				<li class="menu_item"><a href="../categorias/i.html">tienda</a></li>
 				<li class="menu_item"><a href="#">promociones</a></li>
-				<li class="menu_item"><a href="../contacto">contacto</a></li>
+				<li class="menu_item"><a href="../contacto.html">contacto</a></li>
 			</ul>
 		</div>
 	</div>
-<div class="container product_section_container">
+<div class="container single_product_container">
 		<div class="row">
-			<div class="col product_section clearfix">
-			
+			<div class="col">
+
 				<!-- Breadcrumbs -->
 
 				<div class="breadcrumbs d-flex flex-row align-items-center">
 					<ul>
-						<li><a href="index.html">Inicio</a></li>
-						<li class="active"><a href="index.html"><i class="fa fa-angle-right" aria-hidden="true"></i>i</a></li>
+						<li><a href="../index.html">Inicio</a></li>
+						<li><a href="../categorias/galletitas.html"><i class="fa fa-angle-right" aria-hidden="true"></i>galletitas</a></li>
+						<li class="active"><a href="#"><i class="fa fa-angle-right" aria-hidden="true"></i>caquita</a></li>
 					</ul>
 				</div>
-<!-- Sidebar -->
 
-				<div class="sidebar">
-					<div class="sidebar_section">
-						<div class="sidebar_title">
-							<h5>CategorÃ­as</h5>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-6">
+				<div class="single_product_pics">
+					<div class="row">
+						
+						<div class="col-lg-9 image_col order-lg-2 order-1">
+							<div class="single_product_image">
+								<div class="single_product_image_background" style="background-image:url()"></div>
+							</div>
 						</div>
-						<ul class="sidebar_categories">
-							<li class="active"><a href="i.html"><span><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>i</a></li><li><a href="aa.html">aa</a></li><li><a href="caca.html">caca</a></li><li><a href="mocos.html">mocos</a></li><li><a href="galletitas.html">galletitas</a></li>
+					</div>
+				</div>
+			</div>
+			<div class="col-lg-5">
+				<div class="product_details">
+					<div class="product_details_title">
+						<h2>caquita</h2>
+						<p>jejejej</p>
+					</div>
+					<div class="free_delivery d-flex flex-row align-items-center justify-content-center">
+						<span class="ti-truck"></span><span>retiro en sucursal</span>
+					</div>
+					<div class="original_price">23.0</div>
+					<div class="product_price">69.0</div>					
+					
+					<div class="quantity d-flex flex-column flex-sm-row align-items-sm-center">
+						
+						<div class="red_button add_to_cart_button"><a href="contacto.html">ver sucursal mÃ¡s cercana</a></div>
+						<div class="product_favorite d-flex flex-column align-items-center justify-content-center"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+<!-- Tabs -->
+
+	<div class="tabs_section_container">
+
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<div class="tabs_container">
+						<ul class="tabs d-flex flex-sm-row flex-column align-items-left align-items-md-center justify-content-center">
+							
+							<li class="tab active" data-active-tab="tab_2"><span>InformaciÃ³n Adicional</span></li>
+							<li class="tab" data-active-tab="tab_3"><span>Comentarios (2)</span></li>
 						</ul>
 					</div>
-
-					<!-- Price Range Filtering -->
-					<div class="sidebar_section">
-						<div class="sidebar_title">
-							<h5>Filtrar por Precios</h5>
-						</div>
-						<p>
-							<input type="text" id="amount" readonly style="border:0; color:#f6931f; font-weight:bold;">
-						</p>
-						<div id="slider-range"></div>
-						<div class="filter_button"><span>filtrar</span></div>
-					</div>
 				</div>
-<!-- Main Content -->
+			</div>
+			<div class="row">
+				<div class="col">
 
-				<div class="main_content">
+					<!-- Tab Additional Info -->
 
-					<!-- Products -->
-
-					<div class="products_iso">
+					<div id="tab_2" class="tab_container active">
 						<div class="row">
-							<div class="col">
-
-								<!-- Product Sorting -->
-
-								<div class="product_sorting_container product_sorting_container_top">
-									<ul class="product_sorting">
-										<li>
-											<span class="type_sorting_text">Orden generico</span>
-											<i class="fa fa-angle-down"></i>
-											<ul class="sorting_type">
-												<li class="type_sorting_btn" data-isotope-option='{ "sortBy": "original-order" }'><span>Orden generico</span></li>
-												<li class="type_sorting_btn" data-isotope-option='{ "sortBy": "price" }'><span>Precio</span></li>
-												<li class="type_sorting_btn" data-isotope-option='{ "sortBy": "name" }'><span>Nombre del prod.</span></li>
-											</ul>
-										</li>
-										<li>
-											<span>Mostrar</span>
-											<span class="num_sorting_text">99</span>
-											<i class="fa fa-angle-down"></i>
-											<ul class="sorting_num">
-												<li class="num_sorting_btn"><span>6</span></li>
-												<li class="num_sorting_btn"><span>12</span></li>
-												<li class="num_sorting_btn"><span>99</span></li>
-											</ul>
-										</li>
-									</ul>
-									
-
+							<div class="col additional_info_col">
+								<div class="tab_title additional_info_title">
+									<h4>Additional Information</h4>
 								</div>
-
-								<!-- Product Grid -->
-
-								<div class="product-grid">
-
-									<!-- Product 1 -->
-
-						<div class="product-item i">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img src="youtube.png" alt="">
-								</div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_bubble product_bubble_right product_bubble_green d-flex flex-column align-items-center"><span>-%25</span></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="../productos/producto_2.html">caca</a></h6>
-									<div class="product_price">$5.5<span>$22.0</span></div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="../productos/producto_2.html">mÃ¡s detalles</a></div>
-						</div>
-<!-- Product 1 -->
-
-						<div class="product-item i">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img src="" alt="">
-								</div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_bubble product_bubble_right product_bubble_green d-flex flex-column align-items-center"><span>-%10</span></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="../productos/producto_5.html">asdasd</a></h6>
-									<div class="product_price">$12322.2<span>$123222.0</span></div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="../productos/producto_5.html">mÃ¡s detalles</a></div>
-						</div>
-<!-- Product 1 -->
-
-						<div class="product-item i">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img src="" alt="">
-								</div>
-								<div class="favorite favorite_left"></div>
-								
-								<div class="product_info">
-									<h6 class="product_name"><a href="../productos/producto_6.html">culito</a></h6>
-									<div class="product_price">$123222.0</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="../productos/producto_6.html">mÃ¡s detalles</a></div>
-						</div>
-<!-- Product 1 -->
-
-						<div class="product-item i">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img src="" alt="">
-								</div>
-								<div class="favorite favorite_left"></div>
-								
-								<div class="product_info">
-									<h6 class="product_name"><a href="../productos/producto_7.html">asdasd</a></h6>
-									<div class="product_price">$123222.0</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="../productos/producto_7.html">mÃ¡s detalles</a></div>
-						</div>
-
-
-								</div>
-
+								<p>COLOR:<span>Gold, Red</span></p>
+								<p>SIZE:<span>L,M,XL</span></p>
 							</div>
 						</div>
 					</div>
+
+					<!-- Tab Reviews -->
+
+					<div id="tab_3" class="tab_container">
+						<div class="row">
+
+							<!-- User Reviews -->
+
+							<div class="col-lg-6 reviews_col">
+								<div class="tab_title reviews_title">
+									<h4>Reviews (2)</h4>
+								</div>
+
+								<!-- User Review -->
+
+								<div class="user_review_container d-flex flex-column flex-sm-row">
+									<!-- AGREGAR COMENTARIO ACA -->
+								</div>
+
+							</div>
+
+						</div>
+					</div>
+
 				</div>
-</div></div></div>
+			</div>
+		</div>
+
+	</div>
 <!-- Benefit -->
 
 	<div class="benefit">
@@ -327,7 +286,7 @@
 <script src="../plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="../plugins/easing/easing.js"></script>
 <script src="../plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
-<script src="../js/categories_custom.js"></script>
+<script src="../js/single_custom.js"></script>
 </body>
 
 </html>
